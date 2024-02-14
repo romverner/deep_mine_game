@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bux1ljqi38dm4"]
+
+[ext_resource type="Script" path="res://terrain/mineable_block.gd" id="1_c48tf"]
+[ext_resource type="Texture2D" uid="uid://dbjrnxnoa65g1" path="res://art/Terrain/Dirt 1.png" id="2_ggeku"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5us2a"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmop8"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yapyx"]
+size = Vector2(16, 16)
+
+[node name="MineableBlock" type="StaticBody2D"]
+script = ExtResource("1_c48tf")
+
+[node name="TextureSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ggeku")
+
+[node name="ResourceSprite" type="Sprite2D" parent="."]
+z_index = 2
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_5us2a")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 3
+shape = SubResource("RectangleShape2D_bmop8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yapyx")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

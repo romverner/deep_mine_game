@@ -1,0 +1,152 @@
+[gd_scene load_steps=32 format=3 uid="uid://2do8y23mbuiq"]
+
+[ext_resource type="Script" path="res://depths/depth.gd" id="1_3aa4v"]
+[ext_resource type="PackedScene" uid="uid://bux1ljqi38dm4" path="res://terrain/mineable_block.tscn" id="1_145q8"]
+[ext_resource type="Texture2D" uid="uid://dbjrnxnoa65g1" path="res://art/Terrain/Dirt 1.png" id="2_dnjy3"]
+[ext_resource type="Texture2D" uid="uid://dtc7m5f4xfhd7" path="res://art/Terrain/Dirt 2.png" id="3_p6dyb"]
+[ext_resource type="Texture2D" uid="uid://ct3e53fg5glts" path="res://art/Terrain/Dirt 3.png" id="4_cuibi"]
+[ext_resource type="Texture2D" uid="uid://jxcrag8quidu" path="res://art/Terrain/Dirt 4.png" id="5_hx60j"]
+[ext_resource type="Texture2D" uid="uid://bissbmh5q5pg7" path="res://art/Terrain/Grass 1.png" id="6_jocem"]
+[ext_resource type="Texture2D" uid="uid://b8w67o6qorr8c" path="res://art/Terrain/Grass 2.png" id="7_aecvb"]
+[ext_resource type="Texture2D" uid="uid://duorbg3hhhabg" path="res://art/Terrain/Rock Platform Left.png" id="8_brc03"]
+[ext_resource type="Texture2D" uid="uid://c8td5n2bk1ns7" path="res://art/Terrain/Rock Platform Right.png" id="9_jrilu"]
+[ext_resource type="Script" path="res://LevelMap.gd" id="10_ehxp4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkfak"]
+texture = ExtResource("5_hx60j")
+0:0/0 = 0
+0:0/0/modulate = Color(0.694118, 0.694118, 0.694118, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uhxre"]
+texture = ExtResource("6_jocem")
+0:0/0 = 0
+0:0/0/modulate = Color(0.694118, 0.694118, 0.694118, 1)
+
+[sub_resource type="TileSet" id="TileSet_no0bl"]
+sources/0 = SubResource("TileSetAtlasSource_wkfak")
+sources/1 = SubResource("TileSetAtlasSource_uhxre")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nsklv"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sj0cs"]
+texture = ExtResource("2_dnjy3")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_nsklv")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qhwqw"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gte8d"]
+texture = ExtResource("3_p6dyb")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_qhwqw")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2fl63"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3s7so"]
+texture = ExtResource("4_cuibi")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_2fl63")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f78l6"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jny2"]
+texture = ExtResource("5_hx60j")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_f78l6")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kw7hg"]
+polygon = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klfog"]
+texture = ExtResource("6_jocem")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_kw7hg")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5, 8, -5, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_51mtu"]
+polygon = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4w0b"]
+texture = ExtResource("7_aecvb")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_51mtu")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5, 8, -5, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gpuxh"]
+polygon = PackedVector2Array(-8, -1, -7, -1, -7, 0, -6, 0, -5, 0, -5, 1, 8, 1, 8, 2, -5, 2, -7, 1, -8, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1grev"]
+texture = ExtResource("8_brc03")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_gpuxh")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 2, -5, 2, -8, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_agv83"]
+polygon = PackedVector2Array(-8, 1, 5, 1, 5, 0, 7, 0, 7, -1, 8, -1, 8, 0, 5, 2, -8, 2)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ao45o"]
+texture = ExtResource("9_jrilu")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_agv83")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 0, 5, 2, -8, 2)
+
+[sub_resource type="TileSet" id="TileSet_qukew"]
+occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_sj0cs")
+sources/1 = SubResource("TileSetAtlasSource_gte8d")
+sources/2 = SubResource("TileSetAtlasSource_3s7so")
+sources/3 = SubResource("TileSetAtlasSource_1jny2")
+sources/4 = SubResource("TileSetAtlasSource_klfog")
+sources/5 = SubResource("TileSetAtlasSource_b4w0b")
+sources/6 = SubResource("TileSetAtlasSource_1grev")
+sources/7 = SubResource("TileSetAtlasSource_ao45o")
+
+[node name="Depth" type="Node2D"]
+script = ExtResource("1_3aa4v")
+
+[node name="Background" type="TileMap" parent="."]
+light_mask = 2
+visibility_layer = 2
+tile_set = SubResource("TileSet_no0bl")
+format = 2
+layer_0/tile_data = PackedInt32Array(262155, 0, 0, 262154, 0, 0, 327691, 0, 0, 327690, 0, 0, 327689, 0, 0, 327688, 0, 0, 262152, 0, 0, 262153, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 196615, 0, 0, 196614, 0, 0, 196613, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 327687, 0, 0, 327686, 0, 0, 327685, 0, 0, 327684, 0, 0, 327683, 0, 0, 327682, 0, 0, 327681, 0, 0, 327680, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 327699, 0, 0, 262163, 0, 0, 262162, 0, 0, 196626, 0, 0, 196627, 0, 0, 196625, 0, 0, 196624, 0, 0, 196623, 0, 0, 196622, 0, 0, 196621, 0, 0, 196620, 0, 0, 262156, 0, 0, 327692, 0, 0, 327693, 0, 0, 262157, 0, 0, 327694, 0, 0, 262158, 0, 0, 262159, 0, 0, 327695, 0, 0, 262160, 0, 0, 327696, 0, 0, 327697, 0, 0, 262161, 0, 0, 327698, 0, 0, 458771, 0, 0, 524307, 0, 0, 458770, 0, 0, 458769, 0, 0, 524305, 0, 0, 524306, 0, 0, 458768, 0, 0, 458767, 0, 0, 524303, 0, 0, 524304, 0, 0, 458766, 0, 0, 524302, 0, 0, 458765, 0, 0, 524301, 0, 0, 458764, 0, 0, 524300, 0, 0, 458763, 0, 0, 524299, 0, 0, 458762, 0, 0, 458761, 0, 0, 524297, 0, 0, 524298, 0, 0, 458760, 0, 0, 524296, 0, 0, 524295, 0, 0, 524294, 0, 0, 458759, 0, 0, 458758, 0, 0, 458757, 0, 0, 458756, 0, 0, 524292, 0, 0, 524291, 0, 0, 524293, 0, 0, 458755, 0, 0, 458754, 0, 0, 458752, 0, 0, 458753, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0)
+
+[node name="Level" type="TileMap" parent="."]
+z_index = 2
+tile_set = SubResource("TileSet_qukew")
+format = 2
+layer_0/tile_data = PackedInt32Array(196608, 0, 0, 196613, 0, 0, 196611, 0, 0, 327687, 0, 0, 327689, 4, 0, 393230, 0, 0, 327695, 0, 0, 458752, 0, 0, 262146, 0, 0, 262147, 0, 0, 196620, 0, 0, 327691, 4, 0, 393216, 0, 0, 196609, 0, 0, 262145, 0, 0, 327683, 0, 0, 327690, 4, 0, 196610, 0, 0, 196612, 0, 0, 196615, 0, 0, 196614, 0, 0, 262144, 0, 0, 327680, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458757, 0, 0, 458756, 0, 0, 458759, 0, 0, 458758, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 3, 0, 458767, 3, 0, 393231, 3, 0, 327692, 0, 0, 262156, 0, 0, 327694, 0, 0, 327688, 4, 0, 262153, 6, 0, 262154, 7, 0, 327681, 0, 0, 327682, 2, 0, 393218, 0, 0, 393217, 0, 0, 393219, 0, 0, 196624, 0, 0, 196625, 3, 0, 196626, 3, 0, 262162, 3, 0, 262161, 3, 0, 262160, 3, 0, 327696, 3, 0, 327697, 3, 0, 327698, 3, 0, 393234, 2, 0, 458770, 3, 0, 458769, 3, 0, 458768, 3, 0, 393232, 3, 0, 393233, 2, 0, 262149, 0, 0, 393220, 0, 0, 393221, 0, 0, 327685, 0, 0, 327684, 0, 0, 262148, 0, 0, 196627, 1, 0, 196628, 1, 0, 262164, 2, 0, 327700, 2, 0, 327699, 3, 0, 262163, 2, 0, 262165, 1, 0, 196629, 1, 0, 327701, 1, 0, 393236, 3, 0, 393235, 1, 0, 393237, 1, 0, 458773, 1, 0, 458772, 2, 0, 458771, 2, 0, 196621, 0, 0, 196622, 1, 0, 196623, 0, 0, 262159, 0, 0, 262158, 0, 0, 262157, 0, 0, 327693, 0, 0, 393229, 0, 0, 393228, 0, 0, 393227, 0, 0, 393226, 0, 0, 393225, 0, 0, 393224, 0, 0, 393223, 0, 0, 393222, 0, 0, 327686, 0, 0, 262151, 0, 0, 262150, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 4, 0, 131085, 4, 0, 131086, 4, 0, 131091, 4, 0, 131093, 4, 0, 131079, 4, 0, 131078, 4, 0, 131077, 4, 0, 131084, 4, 0, 131088, 4, 0, 131089, 4, 0, 131090, 4, 0, 131092, 4, 0, 131087, 4, 0)
+script = ExtResource("10_ehxp4")
+
+[node name="MineableBlock" parent="Level" instance=ExtResource("1_145q8")]
+visible = false
+position = Vector2(-1172, 1623)
+
+[connection signal="block_depleted" from="Level" to="." method="_on_level_block_depleted"]
+[connection signal="depleted" from="Level/MineableBlock" to="Level" method="_on_mineable_block_depleted"]
