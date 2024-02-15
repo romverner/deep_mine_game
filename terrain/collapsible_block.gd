@@ -16,6 +16,14 @@ func _ready():
 	_starting_pos = global_position
 	#freeze = true
 
+func _integrate_forces(state):
+	var velocity = state.linear_velocity
+	
+	if snappedf(velocity.y, 1.0) != 0:
+		texture_sprite.visible = false
+	else:
+		texture_sprite.visible = true
+
 func _on_impact_area_body_exited(body):
 	if !(body is Player):
 		freeze = false
