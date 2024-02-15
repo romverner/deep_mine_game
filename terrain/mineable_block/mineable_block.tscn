@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bux1ljqi38dm4"]
 
-[ext_resource type="Script" path="res://terrain/mineable_block.gd" id="1_c48tf"]
-[ext_resource type="Texture2D" uid="uid://dbjrnxnoa65g1" path="res://art/Terrain/Dirt 1.png" id="2_ggeku"]
+[ext_resource type="Script" path="res://terrain/mineable_block/mineable_block.gd" id="1_1a5vt"]
+[ext_resource type="Texture2D" uid="uid://dbjrnxnoa65g1" path="res://art/Terrain/Dirt 1.png" id="2_nom7i"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5us2a"]
 light_mode = 2
@@ -13,10 +13,10 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [node name="MineableBlock" type="StaticBody2D"]
-script = ExtResource("1_c48tf")
+script = ExtResource("1_1a5vt")
 
 [node name="TextureSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_ggeku")
+texture = ExtResource("2_nom7i")
 
 [node name="ResourceSprite" type="Sprite2D" parent="."]
 z_index = 2

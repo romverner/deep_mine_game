@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpxltcnmbttc2"]
+
+[ext_resource type="Script" path="res://terrain/collapsible_block/collapsible_block.gd" id="1_vjoos"]
+[ext_resource type="Texture2D" uid="uid://jxcrag8quidu" path="res://art/Terrain/Dirt 4.png" id="2_ibvax"]
+[ext_resource type="Texture2D" uid="uid://rrlfwkwxchxh" path="res://art/Terrain/Stone.png" id="3_ggu8t"]
+[ext_resource type="Script" path="res://terrain/collapsible_block/CollapsibleBlockImpactArea.gd" id="4_st4ju"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vl73v"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqyqw"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46aq0"]
+size = Vector2(14, 1)
+
+[node name="CollapsibleBlock" type="RigidBody2D"]
+gravity_scale = 0.15
+lock_rotation = true
+script = ExtResource("1_vjoos")
+
+[node name="TerrainTextureSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ibvax")
+
+[node name="FallingSprite" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_vl73v")
+texture = ExtResource("3_ggu8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iqyqw")
+
+[node name="ImpactArea" type="Area2D" parent="."]
+script = ExtResource("4_st4ju")
+
+[node name="ImpactAreaCollisionZone" type="CollisionShape2D" parent="ImpactArea"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_46aq0")
+
+[connection signal="falling" from="." to="." method="_on_falling"]
+[connection signal="body_entered" from="ImpactArea" to="." method="_on_impact_area_body_entered"]
+[connection signal="body_exited" from="ImpactArea" to="." method="_on_impact_area_body_exited"]

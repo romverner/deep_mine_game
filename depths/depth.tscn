@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8w67o6qorr8c" path="res://art/Terrain/Grass 2.png" id="7_aecvb"]
 [ext_resource type="Texture2D" uid="uid://duorbg3hhhabg" path="res://art/Terrain/Rock Platform Left.png" id="8_brc03"]
 [ext_resource type="Texture2D" uid="uid://c8td5n2bk1ns7" path="res://art/Terrain/Rock Platform Right.png" id="9_jrilu"]
-[ext_resource type="Script" path="res://LevelMap.gd" id="10_ehxp4"]
+[ext_resource type="Script" path="res://depths/DepthTileMap.gd" id="10_ehxp4"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nsklv"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=51 format=3 uid="uid://bhs0xyedmcc3h"]
 
 [ext_resource type="Texture2D" uid="uid://d35mjv8tmaskc" path="res://art/Player Idle/F0.png" id="1_1ov1r"]
-[ext_resource type="Script" path="res://sprites/player.gd" id="1_ieq21"]
-[ext_resource type="Script" path="res://sprites/Reach.gd" id="2_qi54j"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_ieq21"]
+[ext_resource type="Script" path="res://player/reach/Reach.gd" id="2_qi54j"]
 [ext_resource type="Texture2D" uid="uid://b4k5r7ql3lhrn" path="res://art/Player Idle/F1.png" id="4_ilt4n"]
 [ext_resource type="Texture2D" uid="uid://djlrs1pnq2ru5" path="res://art/Player Mining - Down/F0.png" id="5_be807"]
 [ext_resource type="Texture2D" uid="uid://bouwqe3libdlo" path="res://art/Player Mining - Down/F1.png" id="6_fnync"]
@@ -36,10 +36,10 @@
 [ext_resource type="Texture2D" uid="uid://ccbk3bpiexnok" path="res://art/Player Walking/F6.png" id="27_t65b2"]
 [ext_resource type="Texture2D" uid="uid://cn555qx1oj1vi" path="res://art/Player Walking/F7.png" id="28_1p1y8"]
 [ext_resource type="Texture2D" uid="uid://cco5700uyu4ep" path="res://art/Player Mining - Up/F7.png" id="28_tbo2n"]
-[ext_resource type="Script" path="res://sprites/AnimatedPlayerSprite.gd" id="29_8q5jx"]
-[ext_resource type="Script" path="res://sprites/Lamp.gd" id="30_kh0s8"]
-[ext_resource type="Script" path="res://LampLight.gd" id="31_s2tk0"]
-[ext_resource type="Script" path="res://sprites/PlayerBody.gd" id="32_u8dis"]
+[ext_resource type="Script" path="res://player/animated_sprites/AnimatedPlayerSprite.gd" id="29_8q5jx"]
+[ext_resource type="Script" path="res://player/lamp/Lamp.gd" id="30_kh0s8"]
+[ext_resource type="Script" path="res://player/lamp/LampLight.gd" id="31_s2tk0"]
+[ext_resource type="Script" path="res://player/body/PlayerBody.gd" id="32_u8dis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkoy0"]
 size = Vector2(2, 2)

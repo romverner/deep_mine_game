@@ -1,10 +1,12 @@
 extends TileMap
 
+class_name DepthTileMap
+
 signal block_depleted
 
 @export var TILE_SCENES = {
-	0: preload('res://terrain/mineable_block.tscn'),
-	1: preload('res://terrain/collapsible_block.tscn'),
+	0: preload('res://terrain/mineable_block/mineable_block.tscn'),
+	1: preload('res://terrain/collapsible_block/collapsible_block.tscn'),
 }
 
 var _player = null

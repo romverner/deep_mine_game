@@ -39,7 +39,3 @@ func _on_impact_area_body_entered(body):
 
 func _on_falling():
 	freeze = false
-
-func _on_down_detection_area_area_entered(area):
-	if area is UpDetectionArea:
-		freeze = true
