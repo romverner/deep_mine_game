@@ -7,6 +7,8 @@ signal block_depleted
 	1: preload('res://terrain/collapsible_block.tscn'),
 }
 
+var _player = null
+
 func _ready():
 	_replace_tiles_with_scenes()
 
@@ -39,5 +41,30 @@ func _replace_tile_with_object(tile_pos: Vector2, object_scene: PackedScene, _pa
 		add_child(obj)
 
 func _on_mineable_block_depleted(resource):
-	print(resource)
 	block_depleted.emit(resource)
+
+# We want ladders to be children of tilemap so we can save them to level on exit
+func _on_depth_item_placement_received(item):
+	if _player:
+		var item_scene = item.instantiate()
+		
+		# map player global pos to tile indices
+		# then find global pos of given tile
+		var tile_index = map_to_local(_player.position)
+		var item_position = local_to_map(tile_index)
+		
+		# next snap to 16x16 grid
+		var x_pos = item_position.x
+		var y_pos = item_position.y
+		x_pos = x_pos - (x_pos % 16)
+		y_pos = y_pos - (y_pos % 16)
+		item_scene.position = Vector2(x_pos, y_pos)
+		add_child(item_scene)
+
+func _on_area_2d_body_entered(body):
+	if body is Player:
+		_player = body
+
+func _on_area_2d_body_exited(body):
+	if body is Player:
+		_player = null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bhs0xyedmcc3h"]
+[gd_scene load_steps=51 format=3 uid="uid://bhs0xyedmcc3h"]
 
 [ext_resource type="Texture2D" uid="uid://d35mjv8tmaskc" path="res://art/Player Idle/F0.png" id="1_1ov1r"]
 [ext_resource type="Script" path="res://sprites/player.gd" id="1_ieq21"]
@@ -20,17 +20,26 @@
 [ext_resource type="Texture2D" uid="uid://cd5ubcrvfqof0" path="res://art/Player Mining - Side/F5.png" id="18_rj1y7"]
 [ext_resource type="Texture2D" uid="uid://crbhuln7qnj62" path="res://art/Player Mining - Side/F6.png" id="19_ernib"]
 [ext_resource type="Texture2D" uid="uid://ens85cwe0y5n" path="res://art/Player Mining - Side/F7.png" id="20_7m7wv"]
+[ext_resource type="Texture2D" uid="uid://b3bhk2xf3gn2p" path="res://art/Player Mining - Up/F0.png" id="21_avj6d"]
 [ext_resource type="Texture2D" uid="uid://chdapv1wofalc" path="res://art/Player Walking/F0.png" id="21_fyecb"]
+[ext_resource type="Texture2D" uid="uid://ctqniv88sgrp" path="res://art/Player Mining - Up/F1.png" id="22_iyqab"]
 [ext_resource type="Texture2D" uid="uid://b2sx33wed8mc0" path="res://art/Player Walking/F1.png" id="22_jxvej"]
+[ext_resource type="Texture2D" uid="uid://dhwur6x6dy64f" path="res://art/Player Mining - Up/F2.png" id="23_4h4ol"]
 [ext_resource type="Texture2D" uid="uid://cy06nklas8y6k" path="res://art/Player Walking/F2.png" id="23_g1liy"]
+[ext_resource type="Texture2D" uid="uid://bgxkxnigi6ju" path="res://art/Player Mining - Up/F3.png" id="24_uf8qo"]
 [ext_resource type="Texture2D" uid="uid://m7c1lpnn8oox" path="res://art/Player Walking/F3.png" id="24_v0ei1"]
+[ext_resource type="Texture2D" uid="uid://b4sm3d3iak0sp" path="res://art/Player Mining - Up/F4.png" id="25_1vgj6"]
 [ext_resource type="Texture2D" uid="uid://bu8n6n3nfpeh1" path="res://art/Player Walking/F4.png" id="25_4l3rq"]
+[ext_resource type="Texture2D" uid="uid://jghjpmi26ctb" path="res://art/Player Mining - Up/F5.png" id="26_86v3h"]
 [ext_resource type="Texture2D" uid="uid://c26tm7elwe3pp" path="res://art/Player Walking/F5.png" id="26_uo4jo"]
+[ext_resource type="Texture2D" uid="uid://dybc5hx3ln6ga" path="res://art/Player Mining - Up/F6.png" id="27_swid8"]
 [ext_resource type="Texture2D" uid="uid://ccbk3bpiexnok" path="res://art/Player Walking/F6.png" id="27_t65b2"]
 [ext_resource type="Texture2D" uid="uid://cn555qx1oj1vi" path="res://art/Player Walking/F7.png" id="28_1p1y8"]
+[ext_resource type="Texture2D" uid="uid://cco5700uyu4ep" path="res://art/Player Mining - Up/F7.png" id="28_tbo2n"]
 [ext_resource type="Script" path="res://sprites/AnimatedPlayerSprite.gd" id="29_8q5jx"]
 [ext_resource type="Script" path="res://sprites/Lamp.gd" id="30_kh0s8"]
 [ext_resource type="Script" path="res://LampLight.gd" id="31_s2tk0"]
+[ext_resource type="Script" path="res://sprites/PlayerBody.gd" id="32_u8dis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkoy0"]
 size = Vector2(2, 2)
@@ -117,6 +126,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("21_avj6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_iyqab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_4h4ol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_uf8qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1vgj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_86v3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_swid8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_tbo2n")
+}],
+"loop": true,
+"name": &"mine-up",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("21_fyecb")
 }, {
 "duration": 1.0,
@@ -165,6 +203,9 @@ fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 metadata/_snap_count = 16
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1w0e"]
+size = Vector2(8, 14)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_ieq21")
@@ -203,7 +244,7 @@ shape = SubResource("RectangleShape2D_0gxf5")
 [node name="AnimatedPlayerSprite" type="AnimatedSprite2D" parent="."]
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_h6kfj")
-animation = &"mine-down"
+animation = &"mine-up"
 script = ExtResource("29_8q5jx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -234,11 +275,24 @@ color = Color(1, 0.780392, 0.584314, 0.152941)
 texture = SubResource("GradientTexture2D_2ad1o")
 script = ExtResource("31_s2tk0")
 
+[node name="PlayerBody" type="Area2D" parent="."]
+script = ExtResource("32_u8dis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_w1w0e")
+
 [connection signal="body_entered" from="Reach/RightReachableArea" to="Reach" method="_on_right_reachable_area_body_entered"]
 [connection signal="body_exited" from="Reach/RightReachableArea" to="Reach" method="_on_right_reachable_area_body_exited"]
 [connection signal="body_entered" from="Reach/LeftReachableArea" to="Reach" method="_on_left_reachable_area_body_entered"]
 [connection signal="body_exited" from="Reach/LeftReachableArea" to="Reach" method="_on_left_reachable_area_body_exited"]
 [connection signal="body_entered" from="Reach/DownReachableArea" to="Reach" method="_on_down_reachable_area_body_entered"]
 [connection signal="body_exited" from="Reach/DownReachableArea" to="Reach" method="_on_down_reachable_area_body_exited"]
+[connection signal="body_entered" from="Reach/UpReachableArea" to="Reach" method="_on_up_reachable_area_body_entered"]
+[connection signal="body_exited" from="Reach/UpReachableArea" to="Reach" method="_on_up_reachable_area_body_exited"]
 [connection signal="fuel_change" from="Lamp" to="Lamp/PointLight2D" method="_on_lamp_fuel_change"]
 [connection signal="lamp_turned_off" from="Lamp/PointLight2D" to="Lamp" method="_on_point_light_2d_lamp_turned_off"]
+[connection signal="area_entered" from="PlayerBody" to="PlayerBody" method="_on_area_entered"]
+[connection signal="area_exited" from="PlayerBody" to="PlayerBody" method="_on_area_exited"]
+[connection signal="body_entered" from="PlayerBody" to="PlayerBody" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerBody" to="PlayerBody" method="_on_body_exited"]

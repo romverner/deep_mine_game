@@ -15,4 +15,9 @@ position = Vector2(159, 31)
 visible = false
 color = Color(0.905882, 0.905882, 0.905882, 1)
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 1, 1, 0.145098)
+shadow_enabled = true
+
+[connection signal="place_item" from="Player" to="Depth" method="_on_player_place_item"]
 [connection signal="level_resource_depleted" from="Depth" to="Player" method="_on_depth_level_resource_depleted"]
