@@ -4,6 +4,7 @@ class_name Player
 
 signal place_item
 
+@export var inventory: Inventory
 @export var speed = 60
 @export var inventory_space = 15
 @export var pickaxe_level = 1
@@ -12,6 +13,7 @@ signal place_item
 @onready var _animated_sprite = $AnimatedPlayerSprite
 @onready var _reach = $Reach
 @onready var _body = $PlayerBody
+@onready var _inventory_ui = $InventoryUI
 
 const JUMP_VELOCITY = -205.0
 const MINING_TIME = 1.0 # seconds
@@ -47,9 +49,13 @@ func _process(_delta):
 		_animated_sprite.play('idle')
 		
 	if Input.is_action_just_pressed('place'):
-		var ladder = load('res://items/ladder.tscn')
-		place_item.emit(ladder)
-		print('emit ladder')
+		for item in inventory.resources:
+			if item.name == 'ladder':
+				var ladder = load('res://items/ladder.tscn')
+				place_item.emit(ladder)
+				inventory.resources.erase(item)
+				_inventory_ui.update_slots()
+				return
 	
 # Trying to keep this physics only for real.
 func _physics_process(delta):
@@ -133,13 +139,17 @@ func _handle_mining_actions(aiming_down: bool, aiming_up: bool):
 		_mine_block(_reach.right_bodies)
 
 func _on_depth_level_resource_depleted(resource):
-	if len(resources) > inventory_space:
-		return
+	if resource:
+		print('resource', resource)
+		print(len(inventory.resources))
+		for i in range(len(inventory.resources)):
+			print(i)
+			if not inventory.resources[i]:
+				inventory.resources[i] = resource
+				_inventory_ui.update_slots()
+				return
 		
-	if resource != 'empty':
-		resources.append(resource)
-		
-	print(resources)
+	print(inventory.resources)
 
 # Standard player knockout function. Emptys inventory and respawns.
 func knockout():

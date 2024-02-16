@@ -7,17 +7,18 @@
 
 [node name="Player" parent="." instance=ExtResource("9_8o6ye")]
 light_mask = 3
+z_index = 3
 position = Vector2(159, 31)
 
 [node name="Depth" parent="." instance=ExtResource("3_y83fb")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.905882, 0.905882, 0.905882, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-color = Color(1, 1, 1, 0.145098)
+color = Color(1, 0.635294, 0.368627, 0.215686)
 shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.176471)
 
 [connection signal="place_item" from="Player" to="Depth" method="_on_player_place_item"]
 [connection signal="level_resource_depleted" from="Depth" to="Player" method="_on_depth_level_resource_depleted"]

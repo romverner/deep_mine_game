@@ -4,10 +4,9 @@ class_name MineableBlock
 
 signal depleted
 
-@export var RESOURCE_POOL = ['copper', 'empty',]
-@export var RESOURCE_ASSETS = {
-	'copper': "res://art/Resources/copper.png",
-}
+@export var RESOURCE_POOL = [
+	load('res://inventory/resources/copper.tres'),
+]
 
 @export var TEXTURE_ASSETS = [
 	'res://art/Terrain/Dirt 1.png',
@@ -17,7 +16,7 @@ signal depleted
 ]
 
 @export var hitpoints : int = 100
-@export var resource = ''
+@export var resource: InventoryItem
 
 @onready var texture_sprite = $TextureSprite
 @onready var resource_sprite = $ResourceSprite
@@ -26,9 +25,9 @@ func _ready():
 	var texture = TEXTURE_ASSETS.pick_random()
 	resource = RESOURCE_POOL.pick_random()
 	
-	if resource != 'empty':
+	if resource:
 		texture_sprite.texture = load(texture)
-		resource_sprite.texture = load(RESOURCE_ASSETS[resource])
+		resource_sprite.texture = resource.texture
 		resource_sprite.visible = true
 
 # Mine this block for its resource if any.
