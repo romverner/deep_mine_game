@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=4 format=3 uid="uid://d31f5elwnr3p6"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://d31f5elwnr3p6"]
 
-[ext_resource type="Resource" uid="uid://d3w5gyfxyihky" path="res://inventory/resources/copper.tres" id="1_jf4gh"]
 [ext_resource type="Resource" uid="uid://ckxffdln36mlg" path="res://inventory/items/ladder.tres" id="2_578wl"]
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="2_rvmxd"]
 
 [resource]
 script = ExtResource("2_rvmxd")
 items = Array[Resource("res://inventory/inventiry_item.gd")]([])
-resources = Array[Resource("res://inventory/inventiry_item.gd")]([ExtResource("1_jf4gh"), ExtResource("1_jf4gh"), ExtResource("2_578wl"), null, null, null, null, null, null, null, null, null, null, null, null, null])
+resources = Array[Resource("res://inventory/inventiry_item.gd")]([ExtResource("2_578wl"), ExtResource("2_578wl"), ExtResource("2_578wl"), null, null, null, null, null, null, null, null, null, null, null, null, null])

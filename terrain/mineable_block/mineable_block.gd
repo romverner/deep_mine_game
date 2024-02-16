@@ -6,6 +6,23 @@ signal depleted
 
 @export var RESOURCE_POOL = [
 	load('res://inventory/resources/copper.tres'),
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	null,
+	
 ]
 
 @export var TEXTURE_ASSETS = [
