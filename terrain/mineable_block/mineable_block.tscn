@@ -31,5 +31,3 @@ shape = SubResource("RectangleShape2D_bmop8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yapyx")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
