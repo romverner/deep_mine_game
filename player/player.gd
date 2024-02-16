@@ -50,7 +50,7 @@ func _process(_delta):
 		
 	if Input.is_action_just_pressed('place'):
 		for item in inventory.resources:
-			if item.name == 'ladder':
+			if item and item.name == 'ladder':
 				var ladder = load('res://items/ladder.tscn')
 				place_item.emit(ladder)
 				inventory.resources.erase(item)
@@ -92,7 +92,7 @@ func _handle_ladder_climb(y_velocity, pressing_up, pressing_down):
 	var just_jumped = Input.is_action_just_pressed('jump')
 
 	if just_jumped:
-		y_velocity = -160
+		y_velocity = -200
 		return y_velocity
 		
 	y_velocity = 0
@@ -147,12 +147,13 @@ func _on_depth_level_resource_depleted(resource):
 			if not inventory.resources[i]:
 				inventory.resources[i] = resource
 				_inventory_ui.update_slots()
+				print(inventory.resources)
 				return
-		
-	print(inventory.resources)
 
 # Standard player knockout function. Emptys inventory and respawns.
 func knockout():
-	resources = []
+	for i in range(len(inventory.resources)):
+		inventory.resources[i] = null
+		_inventory_ui.update_slots()
 	self.global_position.x = 0
 	self.global_position.y = 0
