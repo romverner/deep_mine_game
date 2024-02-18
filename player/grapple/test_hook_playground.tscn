@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu72bdp06vklo"]
+
+[ext_resource type="Script" path="res://player/grapple/PivotTest.gd" id="1_lppna"]
+[ext_resource type="PackedScene" uid="uid://cxamqxi0db6sw" path="res://player/grapple/grappling_hook_chain.tscn" id="1_w8tj7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vu0cq"]
+
+[node name="TestHookPlayground" type="Node2D"]
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2(7, 6)
+script = ExtResource("1_lppna")
+
+[node name="GrapplingHook" parent="Pivot" instance=ExtResource("1_w8tj7")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(90, 29)
+shape = SubResource("RectangleShape2D_vu0cq")

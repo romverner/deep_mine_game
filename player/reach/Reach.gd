@@ -1,5 +1,7 @@
 extends Node2D
 
+signal up_block_disappeared
+
 # Node is only here to track reachable bodies, which are accessed by player.
 var right_bodies = []
 var left_bodies = []
@@ -41,9 +43,9 @@ func _on_left_reachable_area_body_exited(body):
 
 func _on_up_reachable_area_body_entered(body):
 	if body is MineableBlock:
-		print(up_bodies)
 		_track_reachable_body(body, up_bodies)
 
 func _on_up_reachable_area_body_exited(body):
 	if body is MineableBlock:
+		up_block_disappeared.emit()
 		_track_reachable_body(body, up_bodies, true)

@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 signal place_item
+signal shoot_grapple
 
 @export var inventory: Inventory
 @export var speed = 60
@@ -20,6 +21,7 @@ const MINING_TIME = 1.0 # seconds
 
 # Default last direction on init to right, since that's where players go from HUB
 var last_direction_faced = 1
+var on_hook = false
 
 # Simple inventory tracking dict
 var resources = []
@@ -37,7 +39,7 @@ func _process(_delta):
 	var aiming_down = Input.is_action_pressed('down')
 	var aiming_up = Input.is_action_pressed('up')
 	var mining = Input.is_action_pressed('mine')
-	
+		
 	# Just keeping track of direction player is facing.
 	_animated_sprite.flip_h = direction < 0
 	
@@ -47,6 +49,12 @@ func _process(_delta):
 		_animated_sprite.play('walk')
 	else:
 		_animated_sprite.play('idle')
+		
+	if Input.is_action_just_pressed('sell') and _body.at_store:
+		sell_items()
+		
+	#if Input.is_action_just_pressed('grapple'):
+		#shoot_grappling_hook()
 		
 	if Input.is_action_just_pressed('place'):
 		for item in inventory.resources:
@@ -65,26 +73,29 @@ func _physics_process(delta):
 	var pressing_down = Input.is_action_pressed('down')
 	
 	# Falling
-	if not is_on_floor() and not is_climbing:
+	if not is_on_floor() and not is_climbing and not on_hook:
 		velocity.y += gravity * delta
 	# Climbing Movements
-	elif is_climbing:
+	elif is_climbing and not on_hook:
 		velocity.y = _handle_ladder_climb(velocity.y, pressing_up, pressing_down)
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump"):
+		on_hook = false
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("move_left", "move_right")
 	
-	if direction:
-		last_direction_faced = direction
-		velocity.x = direction * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-
+	if not on_hook:
+		if direction:
+			last_direction_faced = direction
+			velocity.x = direction * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+		
 	move_and_slide()
 
 # Lander vertical speed control
@@ -140,20 +151,41 @@ func _handle_mining_actions(aiming_down: bool, aiming_up: bool):
 
 func _on_depth_level_resource_depleted(resource):
 	if resource:
-		print('resource', resource)
-		print(len(inventory.resources))
 		for i in range(len(inventory.resources)):
-			print(i)
 			if not inventory.resources[i]:
 				inventory.resources[i] = resource
 				_inventory_ui.update_slots()
-				print(inventory.resources)
 				return
 
 # Standard player knockout function. Emptys inventory and respawns.
 func knockout():
 	for i in range(len(inventory.resources)):
-		inventory.resources[i] = null
+		if not inventory.resources[i].name == 'ladder':
+			inventory.resources[i] = null
 		_inventory_ui.update_slots()
-	self.global_position.x = 0
-	self.global_position.y = 0
+	self.global_position.x = 412
+	self.global_position.y = -45
+
+func sell_items():
+	for i in range(len(inventory.resources)):
+		var resource = inventory.resources[i]
+		
+		if resource:
+			inventory.money += resource.value
+			inventory.resources[i] = null
+		
+	_inventory_ui.update_slots()
+	
+#func shoot_grappling_hook():
+	#var hook = _hook_raycast.get_hook_position()
+
+
+func _on_grappling_hook_chain_hooked(hooked_position):
+	on_hook = true
+	var tween = get_tree().create_tween()
+	hooked_position.y += 8
+	tween.tween_property(self, 'position', hooked_position, 0.75)
+
+
+func _on_reach_up_block_disappeared():
+	on_hook = false

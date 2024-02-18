@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxamqxi0db6sw"]
+
+[ext_resource type="Texture2D" uid="uid://byy4vux3qjro0" path="res://art/Items/Grappling Hook.png" id="1_cqpdv"]
+[ext_resource type="Script" path="res://player/grapple/grappling_hook_chain.gd" id="2_sk1ri"]
+
+[node name="GrapplingHookChain" type="Sprite2D"]
+texture_repeat = 2
+rotation = -1.5708
+texture = ExtResource("1_cqpdv")
+offset = Vector2(2.08165e-12, 8)
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 16, 16)
+script = ExtResource("2_sk1ri")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(2.08165e-12, 150)

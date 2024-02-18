@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://w6jhvf8tvc7p"]
+
+[ext_resource type="Resource" uid="uid://ckxffdln36mlg" path="res://inventory/items/ladder.tres" id="1_p0h8l"]
+[ext_resource type="Script" path="res://inventory/inventory.gd" id="2_2ss3g"]
+
+[resource]
+script = ExtResource("2_2ss3g")
+items = Array[Resource("res://inventory/inventiry_item.gd")]([ExtResource("1_p0h8l"), ExtResource("1_p0h8l"), ExtResource("1_p0h8l"), ExtResource("1_p0h8l"), ExtResource("1_p0h8l"), ExtResource("1_p0h8l"), null, null, null, null, null, null, null, null, null])
+resources = Array[Resource("res://inventory/inventiry_item.gd")]([])
+money = 0

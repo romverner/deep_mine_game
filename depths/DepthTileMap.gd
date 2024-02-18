@@ -47,6 +47,7 @@ func _on_mineable_block_depleted(resource):
 
 # We want ladders to be children of tilemap so we can save them to level on exit
 func _on_depth_item_placement_received(item):
+	# Some actions are limited to the depths, so action logic located here.
 	if _player:
 		var item_scene = item.instantiate()
 		
@@ -70,3 +71,19 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body is Player:
 		_player = null
+
+
+func _on_depth_player_shot_grapple(blocks_reachable):
+	# Some actions are limited to the depths, so action logic located here.
+	if _player:
+		var tile_index = map_to_local(_player.position)
+		var item_position = local_to_map(tile_index)
+		var x_pos = item_position.x
+		var y_pos = item_position.y
+		
+		x_pos = x_pos - (x_pos % 16)
+		# Subtract 16 to get tile above player.
+		item_position.y = item_position.y - (item_position.y % 16) - 16
+		
+		var cell_data = get_cell_tile_data(0, item_position)
+		print(cell_data)

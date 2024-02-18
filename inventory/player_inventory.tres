@@ -7,3 +7,4 @@
 script = ExtResource("2_rvmxd")
 items = Array[Resource("res://inventory/inventiry_item.gd")]([])
 resources = Array[Resource("res://inventory/inventiry_item.gd")]([ExtResource("2_578wl"), ExtResource("2_578wl"), ExtResource("2_578wl"), null, null, null, null, null, null, null, null, null, null, null, null, null])
+money = 0

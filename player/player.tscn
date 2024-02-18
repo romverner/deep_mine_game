@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bhs0xyedmcc3h"]
+[gd_scene load_steps=55 format=3 uid="uid://bhs0xyedmcc3h"]
 
 [ext_resource type="Texture2D" uid="uid://d35mjv8tmaskc" path="res://art/Player Idle/F0.png" id="1_1ov1r"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_ieq21"]
@@ -42,6 +42,8 @@
 [ext_resource type="Script" path="res://player/lamp/LampLight.gd" id="31_s2tk0"]
 [ext_resource type="Script" path="res://player/body/PlayerBody.gd" id="32_u8dis"]
 [ext_resource type="PackedScene" uid="uid://dhjydkfcqkkvm" path="res://inventory/inventory_ui.tscn" id="42_h58au"]
+[ext_resource type="Script" path="res://player/grapple/GrapplingHook.gd" id="43_q7pr7"]
+[ext_resource type="PackedScene" uid="uid://cxamqxi0db6sw" path="res://player/grapple/grappling_hook_chain.tscn" id="44_7p2wl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkoy0"]
 size = Vector2(2, 2)
@@ -214,6 +216,7 @@ script = ExtResource("1_ieq21")
 inventory = ExtResource("2_6j5xt")
 
 [node name="InventoryUI" parent="." instance=ExtResource("42_h58au")]
+visible = false
 offset_left = -54.0
 offset_top = -81.0
 offset_right = 54.0
@@ -291,6 +294,12 @@ script = ExtResource("32_u8dis")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_w1w0e")
 
+[node name="GrapplingHook" type="Node2D" parent="."]
+script = ExtResource("43_q7pr7")
+
+[node name="GrapplingHookChain" parent="GrapplingHook" instance=ExtResource("44_7p2wl")]
+
+[connection signal="up_block_disappeared" from="Reach" to="." method="_on_reach_up_block_disappeared"]
 [connection signal="body_entered" from="Reach/RightReachableArea" to="Reach" method="_on_right_reachable_area_body_entered"]
 [connection signal="body_exited" from="Reach/RightReachableArea" to="Reach" method="_on_right_reachable_area_body_exited"]
 [connection signal="body_entered" from="Reach/LeftReachableArea" to="Reach" method="_on_left_reachable_area_body_entered"]
@@ -305,3 +314,4 @@ shape = SubResource("RectangleShape2D_w1w0e")
 [connection signal="area_exited" from="PlayerBody" to="PlayerBody" method="_on_area_exited"]
 [connection signal="body_entered" from="PlayerBody" to="PlayerBody" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerBody" to="PlayerBody" method="_on_body_exited"]
+[connection signal="hooked" from="GrapplingHook/GrapplingHookChain" to="." method="_on_grappling_hook_chain_hooked"]

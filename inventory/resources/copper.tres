@@ -7,3 +7,4 @@
 script = ExtResource("1_obsxr")
 name = "copper"
 texture = ExtResource("2_ovwqr")
+value = 25

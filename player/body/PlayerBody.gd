@@ -3,6 +3,7 @@ extends Area2D
 class_name PlayerBody
 
 var climbing_ladder = false
+var at_store = false
 var overlapping_ladders = []
 var overlapping_tiles = []
 
@@ -18,19 +19,20 @@ func _process(_delta):
 # Ladder Body Detection
 func _on_area_entered(area):
 	if area is LadderArea:
-		print(area)
 		overlapping_ladders.append(area)
 		climbing_ladder = len(overlapping_ladders) > 0
+	
+	if area is StoreArea:
+		at_store = true
 
 # Ladder Body Detection
 func _on_area_exited(area):
-	print(area)
 	if area is LadderArea:
-		print(area)
 		overlapping_ladders.erase(area)
 		climbing_ladder = len(overlapping_ladders) > 0
-
-
+	
+	if area is StoreArea:
+		at_store = false
 
 func _on_body_entered(body):
 	print(body)

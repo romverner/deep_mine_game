@@ -26,4 +26,5 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.176471)
 
 [connection signal="place_item" from="Player" to="Depth" method="_on_player_place_item"]
+[connection signal="shoot_grapple" from="Player" to="Depth" method="_on_player_shoot_grapple"]
 [connection signal="level_resource_depleted" from="Depth" to="Player" method="_on_depth_level_resource_depleted"]

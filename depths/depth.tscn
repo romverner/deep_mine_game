@@ -132,6 +132,7 @@ position = Vector2(400, 1600)
 shape = SubResource("RectangleShape2D_eac4f")
 
 [connection signal="item_placement_received" from="." to="Level" method="_on_depth_item_placement_received"]
+[connection signal="player_shot_grapple" from="." to="Level" method="_on_depth_player_shot_grapple"]
 [connection signal="block_depleted" from="Level" to="." method="_on_level_block_depleted"]
 [connection signal="body_entered" from="Level/Area2D" to="Level" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Level/Area2D" to="Level" method="_on_area_2d_body_exited"]
