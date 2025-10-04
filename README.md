@@ -6,8 +6,9 @@ Includes actions for:
 - grappling hook
 - ladder placement
 
-Physics:
+Other notable features:
 - Certain blocks collapse if support underneath is mined out
 - player physics
+- player "lantern" slowly fades as fuel runs out
 
 ![til](./output.gif)
